@@ -1,0 +1,29 @@
+{
+  "resourceType": "Patient",
+  "id": "18",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2019-10-15T05:06:37.000+00:00"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody><tr><td>Identifier</td><td>ft5gh46zd4f35a4sg68sd7f5v</td></tr><tr><td>Date of birth</td><td><span>13 April 1959</span></td></tr></tbody></table></div>"
+  },
+  "identifier": [
+    {
+      "use": "official",
+      "system": "HospitalID",
+      "value": "ft5gh46zd4f35a4sg68sd7f5v"
+    },
+    {
+      "use": "official",
+      "system": "UID",
+      "value": "45her6t8h74f6g54s68d7tfa6w8er4g6d5f4g"
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1959-04-13",
+  "managingOrganization": {
+    "reference": "Organization/17"
+  }
+}

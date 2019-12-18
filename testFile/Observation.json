@@ -1,0 +1,71 @@
+{
+  "resourceType": "Observation",
+  "id": "4691",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2019-12-18T14:07:44.000+00:00"
+  },
+  "basedOn": [
+    {
+      "reference": "ServiceRequest/99"
+    }
+  ],
+  "status": "final",
+  "category": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/ValueSet/observation-category",
+          "code": "laboratory"
+        }
+      ]
+    }
+  ],
+  "code": {
+    "coding": [
+      {
+        "system": "http://loinc.org",
+        "display": "RTCREA"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/4690"
+  },
+  "encounter": {
+    "reference": "Encounter/176"
+  },
+  "effectiveDateTime": "2018-06-12T00:00:00",
+  "valueQuantity": {
+    "value": 0.5,
+    "unit": "mg/dL",
+    "system": "\"http://unitsofmeasure.org",
+    "code": "mg/dL"
+  },
+  "interpretation": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/v2/0078",
+          "code": "N",
+          "display": "Normal"
+        }
+      ]
+    }
+  ],
+  "bodySite": {
+    "text": "Calf bone"
+  },
+  "referenceRange": [
+    {
+      "low": {
+        "value": 0.5,
+        "unit": "mg/dL"
+      },
+      "high": {
+        "value": 0.5,
+        "unit": "mg/dL"
+      }
+    }
+  ]
+}

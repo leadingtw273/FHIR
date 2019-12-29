@@ -4,8 +4,8 @@ const Encounter = require('./Encounter');
 const ServiceRequest = require('./ServiceRequest');
 const Observation = require('./Observation');
 
-module.exports = class Parse {
-  static getResource(resource) {
+module.exports = class FHIR {
+  static parse(resource) {
     switch(resource.resourceType) {
       case 'Patient': 
         return new Patient(resource);

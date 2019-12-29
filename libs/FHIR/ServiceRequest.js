@@ -1,14 +1,14 @@
-const Resource = require('./Resource');
+const Resource = require("./Resource");
 
 module.exports = class ServiceRequest extends Resource {
   constructor(resource) {
     super(resource);
-    this.checkResourceType('ServiceRequest');
+    this.checkResourceType("ServiceRequest");
     this.resource = resource;
   }
 
   get officialId() {
-    return this.getIdentifierValueByUse('official');
+    return this.getIdentifierValueByUse("official");
   }
   set officialId(val) {
     this.setIdentifier(val);
@@ -17,76 +17,53 @@ module.exports = class ServiceRequest extends Resource {
   get codeText() {
     try {
       return this.resource.code.text;
-    } catch(err) {
+    } catch (err) {
       this.occurError(err);
-    } 
+    }
   }
-  set codeText(val) {
-    this.resource['code'] = {
-      text: val
-    };
+  set codeText(text) {
+    this.resource["code"] = this.formatCodeableConcept({}, text);
   }
 
   get occurrenceDateTime() {
     return this.resource.occurrenceDateTime;
   }
-  set occurrenceDateTime(val) {
-    this.resource['occurrenceDateTime'] = this.formatDateTime(val);
+  set occurrenceDateTime(dateTime) {
+    this.resource["occurrenceDateTime"] = this.formatDateTime(dateTime);
   }
 
   get authoredOn() {
     return this.resource.authoredOn;
   }
-  set authoredOn(val) {
-    this.resource['authoredOn'] = this.formatDateTime(val);
+  set authoredOn(dateTime) {
+    this.resource["authoredOn"] = this.formatDateTime(dateTime);
   }
 
   get patientId() {
-    try {
-      return this.getReferenceId(this.resource.subject);
-    } catch(err) {
-      this.occurError(err);
-    } 
+    return this.getReferenceId(this.resource.subject);
   }
-  set patientId(val) {
-    this.resource['subject'] = this.formatReference('Patient', val);
+  set patientId(id) {
+    this.resource["subject"] = this.formatReference("Patient", id);
   }
 
   get practitionerId() {
-    try {
-      return this.getReferenceId(this.resource.requester);
-    } catch(err) {
-      this.occurError(err);
-    } 
+    return this.getReferenceId(this.resource.requester);
   }
-  set practitionerId(val) {
-    this.resource['requester'] = this.formatReference('Practitioner', val);
+  set practitionerId(id) {
+    this.resource["requester"] = this.formatReference("Practitioner", id);
   }
 
   get encounterId() {
-    try {
-      return this.getReferenceId(this.resource.encounter);
-    } catch(err) {
-      this.occurError(err);
-    } 
+    return this.getReferenceId(this.resource.encounter);
   }
-  set encounterId(val) {
-    this.resource['encounter'] = this.formatReference('Encounter', val);
+  set encounterId(id) {
+    this.resource["encounter"] = this.formatReference("Encounter", id);
   }
-  
+
   get organizationId() {
-    try {
-      return this.getReferenceId(this.resource.performer[0]);
-    } catch(err) {
-      this.occurError(err);
-    } 
+    return this.getReferenceId(this.resource.performer[0]);
   }
-  set organizationId(val) {
-    const result = this.formatReference('Organization', val);
-    if(Array.isArray(this.resource['performer'])){
-      this.resource['performer'].push(result);
-    } else {
-      this.resource['performer'] = [ result ];
-    }
+  set organizationId(id) {
+    this.resource["performer"] = [this.formatReference("Organization", id)];
   }
-}
+};
